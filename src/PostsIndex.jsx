@@ -1,4 +1,4 @@
-export function PostsIndex({ posts }) {
+export function PostsIndex({ posts, onShowPost }) {
   console.log({ posts });
   return (
     <div id="posts-index">
@@ -9,8 +9,7 @@ export function PostsIndex({ posts }) {
           <p> {post.body}</p>
           <img src={post.image} alt="" />
 
-          {/* <button>More info</button> */}
-        </div>
+          <button onClick={onShowPost}>More info</button>        </div>
       ))}
 
     </div>
