@@ -1,4 +1,6 @@
 import './App.css'
+import { useState } from "react";
+import axios from 'axios';
 
 function Header() {
 
@@ -48,9 +50,9 @@ console.log({posts})
         <div key={post.id} className="posts">
           <h2>{post.title}</h2>
           <p> {post.body}</p>
-          <img src={post.image_url} alt="" />
+          <img src={post.image} alt="" />
           
-          <button>More info</button>
+          {/* <button>More info</button> */}
         </div>      
       ))}
       
@@ -59,29 +61,23 @@ console.log({posts})
 }
 
 function Content() {
-  let posts = [
-    {
-      id: 1,
-      title: "blog1",
-      body: "this is a blog",
-      image: "___",
-    },
-    {
-      id: 2,
-      title: "blog2",
-      body: "this is another blog",
-      image: "___",
-    },
-    {
-      id: 3,
-      title: "blog3",
-      body: "third time's the charm",
-      image: "___",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+  
+const handleIndexPosts = () => {
+  console.log("it works")
+  axios.get('http://localhost:3000/posts.json')
+  .then((response) => {
+    // handle success
+    setPosts(response.data);
+  })
+ 
+}
+
   return(
     <div>
     <PostsNew />
+    <br></br>
+    <button onClick={handleIndexPosts}>Get Posts</button>
     <PostsIndex posts={posts}/>
     </div>
   )
