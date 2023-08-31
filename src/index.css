@@ -5,3 +5,7 @@
 html {
   scroll-behavior: smooth;
 }
+
+#root {
+  background-image: url("./assets/triangles_pattern.webp");
+}

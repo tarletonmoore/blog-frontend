@@ -31,11 +31,14 @@ export function Content() {
   };
 
   return (
-    <div>
+    <div className="container">
       <PostsNew />
       <br></br>
-      {/* <button onClick={handleIndexPosts}>Get Posts</button> */}
+      {/* <div className="row row-cols-2">
+  <div className="col-6"> */}
       <PostsIndex posts={posts} onShowPost={handleShowPost}/>
+      {/* </div>
+      </div> */}
       <Modal show={isPostsShowVisible} onClose={handleClose}>
       <PostsShow currentPost={currentPost}/>
       </Modal>
