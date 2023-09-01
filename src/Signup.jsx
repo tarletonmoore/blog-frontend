@@ -1,15 +1,15 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
-export function PostsNew() {
-
+export function Signup() {
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors([]);
     const params = new FormData(event.target);
-    axios.post("http://localhost:3000/posts.json", params)
+    axios
+      .post("http://localhost:3000/users.json", params)
       .then((response) => {
         console.log(response.data);
         event.target.reset();
@@ -21,9 +21,9 @@ export function PostsNew() {
       });
   };
 
-  return(
-    <div>
-      <h1>New Post</h1>
+  return (
+    <div id="signup">
+      <h1>Signup</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
@@ -31,18 +31,20 @@ export function PostsNew() {
       </ul>
       <form onSubmit={handleSubmit}>
         <div>
-          Title: <input name="title" type="text" />
-        </div>
-        
-        <div>
-          Body: <input name="body" type="text" />
+          Name: <input name="name" type="text" />
         </div>
         <div>
-         Image: <input name="image" type="text" />
+          Email: <input name="email" type="email" />
         </div>
-      <br></br>
-        <button type="submit">Create post</button>
+        <div>
+          Password: <input name="password" type="password" />
+        </div>
+        <div>
+          Password confirmation: <input name="password_confirmation" type="password" />
+        </div>
+        <br></br>
+        <button type="submit">Signup</button>
       </form>
     </div>
-  )
+  );
 }

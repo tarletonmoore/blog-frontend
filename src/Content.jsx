@@ -1,47 +1,65 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
-import { PostsNew } from './PostsNew';
-import { PostsIndex } from './PostsIndex';
+import { PostsIndex } from "./PostsIndex";
+import axios from 'axios'
 import { Modal } from "./Modal";
 import { PostsShow } from "./PostsShow";
+import { PostsNew } from "./PostsNew";
+import { Signup } from "./Signup";
+import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 
 export function Content() {
-  const [posts, setPosts] = useState([]);
-  const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
-  const [currentPost, setCurrentPost] = useState({});
 
-  const handleIndexPosts = () => {
-    console.log("it works");
-    axios.get('http://localhost:3000/posts.json')
-      .then((response) => {
-        // handle success
-        setPosts(response.data);
-      });
+const [posts, setPosts] = useState([])
+const [isShowPostsVisible, setIsShowPostsVisible] = useState(false)
+const [currentPost, setCurrentPost] = useState([])
 
-  };
-  useEffect(handleIndexPosts, []);
 
-  const handleShowPost = (post) => {
-    setIsPostsShowVisible(true);
-    setCurrentPost(post)
-  };
+const handleIndexPosts = () => {
+  console.log("it works");
+  axios.get('http://localhost:3000/posts.json')
+    .then((response) => {
+      // handle success
+      setPosts(response.data);
+    });
 
-  const handleClose = () => {
-    setIsPostsShowVisible(false);
-  };
+};
 
+
+const handleShowPost = (post) => {
+setIsShowPostsVisible(true)
+  setCurrentPost(post)
+}
+
+const handleClose = () => {
+  setIsShowPostsVisible(false)
+}
+
+// const handleCreatePost = (params, successCallback) => {
+//       console.log("handleCreatePost", params);
+//        axios.post("http://localhost:3000/posts.json", params).then((response) => {
+//          setPosts([...posts, response.data]);
+//          successCallback();
+//        });
+//      };
+     useEffect(handleIndexPosts, []);
   return (
-    <div className="container">
-      <PostsNew />
+    <div>
       <br></br>
-      {/* <div className="row row-cols-2">
-  <div className="col-6"> */}
-      <PostsIndex posts={posts} onShowPost={handleShowPost}/>
-      {/* </div>
-      </div> */}
-      <Modal show={isPostsShowVisible} onClose={handleClose}>
-      <PostsShow currentPost={currentPost}/>
-      </Modal>
+      <LogoutLink />
+      <br></br>
+      <br></br>
+      <Signup />
+      <br></br>
+      <Login />
+      <br></br>
+      <PostsNew 
+      // onCreatePost={handleCreatePost}
+      />
+    <PostsIndex posts={posts} onShowPost={handleShowPost}/>
+    <Modal show={isShowPostsVisible} onClose={handleClose}>
+<PostsShow post={currentPost}/>
+    </Modal>
     </div>
   );
 }
