@@ -62,7 +62,7 @@ const handleDestroyPost = (id) => {
     console.log(response.data)
     // close the modal
     handleClose()
-    // delete from the recipes array
+    // delete from the posts array
     setPosts(
       posts.filter(post => id !== post.id)
     )      
