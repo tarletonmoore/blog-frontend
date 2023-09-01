@@ -35,13 +35,19 @@ const handleClose = () => {
   setIsShowPostsVisible(false)
 }
 
-// const handleCreatePost = (params, successCallback) => {
-//       console.log("handleCreatePost", params);
-//        axios.post("http://localhost:3000/posts.json", params).then((response) => {
-//          setPosts([...posts, response.data]);
-//          successCallback();
-//        });
-//      };
+const handleCreatePost = (params, successCallback) => {
+      console.log("handleCreatePost", params);
+       axios.post("http://localhost:3000/posts.json", params).then((response) => {
+         setPosts([...posts, response.data]);
+         successCallback();
+       });
+     };
+
+// const handleUpdatePost = () => {
+
+
+// }
+
      useEffect(handleIndexPosts, []);
   return (
     <div>
@@ -53,9 +59,7 @@ const handleClose = () => {
       <br></br>
       <Login />
       <br></br>
-      <PostsNew 
-      // onCreatePost={handleCreatePost}
-      />
+      <PostsNew onCreatePost={handleCreatePost}/>
     <PostsIndex posts={posts} onShowPost={handleShowPost}/>
     <Modal show={isShowPostsVisible} onClose={handleClose}>
 <PostsShow post={currentPost}/>
