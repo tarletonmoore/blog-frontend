@@ -12,7 +12,7 @@ export function PostsIndex({ posts, onShowPost }) {
           <h2>{post.title}</h2>
           <p> {post.body}</p>
           <img src={post.image} alt="" />
-
+<br></br>
           <button onClick={() => onShowPost(post)}>More info</button> 
           
             </div>
