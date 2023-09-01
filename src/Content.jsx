@@ -43,10 +43,31 @@ const handleCreatePost = (params, successCallback) => {
        });
      };
 
-// const handleUpdatePost = () => {
+const handleUpdatePost = (id, params) => {
+console.log("workin")
+axios.patch(`http://localhost:3000/posts/${id}.json`, params).then(response => {
+  setCurrentPost(response.data)
+  setPosts(posts.map(post => {
+    if (post.id === id) {
+      return response.data;
+    } else {
+      return post;
+    }
+  }))
+})
+}
 
-
-// }
+const handleDestroyPost = (id) => {
+  axios.delete(`http://localhost:3000/posts/${id}.json`).then(response => {
+    console.log(response.data)
+    // close the modal
+    handleClose()
+    // delete from the recipes array
+    setPosts(
+      posts.filter(post => id !== post.id)
+    )      
+  })
+}
 
      useEffect(handleIndexPosts, []);
   return (
@@ -62,7 +83,7 @@ const handleCreatePost = (params, successCallback) => {
       <PostsNew onCreatePost={handleCreatePost}/>
     <PostsIndex posts={posts} onShowPost={handleShowPost}/>
     <Modal show={isShowPostsVisible} onClose={handleClose}>
-<PostsShow post={currentPost}/>
+<PostsShow post={currentPost} onUpdatePost={handleUpdatePost} onDestroyPost={handleDestroyPost}/>
     </Modal>
     </div>
   );

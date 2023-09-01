@@ -1,19 +1,24 @@
 import axios from "axios"
 
-export function PostsShow({post}) {
+export function PostsShow({post, onUpdatePost, onDestroyPost}) {
   const handleSubmit = (event) => {
     event.preventDefault()
     const params = new FormData(event.target)
     console.log('submitting')
-    axios.patch(`http://localhost:3000/posts/${post.id}.json`, params).then(response => {
-      console.log(response.data);
-    })
+ onUpdatePost(post.id, params)
+  }
+
+  const handleClick = () => {
+    console.log('click')
+    onDestroyPost(post.id)
   }
 
   return (
     <div>
       <h1>{post.title}</h1>
       <p>{post.body}</p>
+      <br></br>
+      <button onClick={handleClick}>Delete Post</button>
       <br></br>
       <form onSubmit={handleSubmit}>
         <div>
