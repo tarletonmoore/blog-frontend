@@ -1,3 +1,4 @@
+import { LogoutLink } from './LogoutLink';
 import './index.css'
 import { Link } from "react-router-dom";
 
@@ -20,7 +21,7 @@ export function Header() {
           <a className="nav-link" href="#">Link</a>
         </li> */}
            <li className="nav-item">
-          <Link to="/posts-index" className="nav-link" >All Posts</Link>
+          <Link to="/posts" className="nav-link" >All Posts</Link>
 
         </li>
       
@@ -29,7 +30,7 @@ export function Header() {
 
         </li>
         <li className="nav-item">
-          <Link to="/posts-new" className="nav-link" >New Post</Link>
+          <Link to="/posts/new" className="nav-link" >New Post</Link>
 
         </li>
         <li className="nav-item">
@@ -41,7 +42,7 @@ export function Header() {
 
         </li>
         <li className="nav-item">
-          <Link to="/logout" className="nav-link" >Logout</Link>
+          <LogoutLink />
 
         </li>
         <li className="nav-item dropdown">

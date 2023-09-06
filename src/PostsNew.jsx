@@ -9,6 +9,7 @@ export function PostsNew({onCreatePost}) {
     const params = new FormData(event.target);
     onCreatePost(params)
     event.target.reset();
+    window.location.href = "/posts"
   };
 
   return(
