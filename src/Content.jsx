@@ -7,6 +7,8 @@ import { PostsNew } from "./PostsNew";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+import { Routes, Route } from "react-router-dom";
+import { About } from "./About";
 
 export function Content() {
 
@@ -72,6 +74,9 @@ const handleDestroyPost = (id) => {
      useEffect(handleIndexPosts, []);
   return (
     <div>
+         <Routes>
+      <Route path="/about" element={<About />} />
+    </Routes>
       <br></br>
       <LogoutLink />
       <br></br>

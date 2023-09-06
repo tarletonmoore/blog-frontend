@@ -20,6 +20,7 @@ export function PostsShow({post, onUpdatePost, onDestroyPost}) {
       <br></br>
       <button onClick={handleClick}>Delete Post</button>
       <br></br>
+      <br></br>
       <form onSubmit={handleSubmit}>
         <div>
           Title: <input name="title" type="text" defaultValue={post.title}/>

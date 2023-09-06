@@ -1,4 +1,5 @@
 import './index.css'
+import { Link } from "react-router-dom";
 
 export function Header() {
 
@@ -17,6 +18,10 @@ export function Header() {
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Link</a>
+        </li>
+        <li className="nav-item">
+          <Link to="/about" className="nav-link" >About</Link>
+
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
