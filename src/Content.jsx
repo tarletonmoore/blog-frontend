@@ -7,6 +7,7 @@ import { PostsNew } from "./PostsNew";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+import { SeperatePostsShow } from "./SeperatePostsShow";
 import { Routes, Route } from "react-router-dom";
 import { About } from "./About";
 
@@ -81,6 +82,7 @@ const handleDestroyPost = (id) => {
       <Route path="/logout" element={<LogoutLink />}/>
       <Route path="/posts/new" element={<PostsNew onCreatePost={handleCreatePost}/>} />
       <Route path="/posts" element={<PostsIndex posts={posts} onShowPost={handleShowPost}/>}/>
+      <Route path="/posts/:id" element={<SeperatePostsShow />}/>
     </Routes>
       <br></br>
       <Modal show={isShowPostsVisible} onClose={handleClose}>

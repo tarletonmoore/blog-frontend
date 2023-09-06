@@ -13,8 +13,9 @@ export function PostsIndex({ posts, onShowPost }) {
           <p> {post.body}</p>
           <img src={post.image} alt="" />
 <br></br>
-          <button onClick={() => onShowPost(post)}>More info</button> 
-          
+          {/* <button onClick={() => onShowPost(post)}>More info</button>  */}
+          <br></br>
+          <a href={`/posts/${post.id}`}><button>Go to show page</button></a>
             </div>
           </div>      
        </div>

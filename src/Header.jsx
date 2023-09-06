@@ -20,15 +20,16 @@ export function Header() {
         {/* <li className="nav-item">
           <a className="nav-link" href="#">Link</a>
         </li> */}
+          <li className="nav-item">
+          <Link to="/about" className="nav-link" >About</Link>
+
+        </li>
            <li className="nav-item">
           <Link to="/posts" className="nav-link" >All Posts</Link>
 
         </li>
       
-        <li className="nav-item">
-          <Link to="/about" className="nav-link" >About</Link>
-
-        </li>
+      
         <li className="nav-item">
           <Link to="/posts/new" className="nav-link" >New Post</Link>
 
