@@ -16,11 +16,32 @@ export function Header() {
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a className="nav-link" href="#">Link</a>
+        </li> */}
+           <li className="nav-item">
+          <Link to="/posts-index" className="nav-link" >All Posts</Link>
+
         </li>
+      
         <li className="nav-item">
           <Link to="/about" className="nav-link" >About</Link>
+
+        </li>
+        <li className="nav-item">
+          <Link to="/posts-new" className="nav-link" >New Post</Link>
+
+        </li>
+        <li className="nav-item">
+          <Link to="/signup" className="nav-link" >Signup</Link>
+
+        </li>
+        <li className="nav-item">
+          <Link to="/login" className="nav-link" >Login</Link>
+
+        </li>
+        <li className="nav-item">
+          <Link to="/logout" className="nav-link" >Logout</Link>
 
         </li>
         <li className="nav-item dropdown">

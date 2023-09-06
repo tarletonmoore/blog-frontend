@@ -76,20 +76,17 @@ const handleDestroyPost = (id) => {
     <div>
          <Routes>
       <Route path="/about" element={<About />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />}/>
+      <Route path="/logout" element={<LogoutLink />}/>
+      <Route path="/posts-new" element={<PostsNew onCreatePost={handleCreatePost}/>} />
+      <Route path="/posts-index" element={<PostsIndex posts={posts} onShowPost={handleShowPost}/>}/>
     </Routes>
       <br></br>
-      <LogoutLink />
-      <br></br>
-      <br></br>
-      <Signup />
-      <br></br>
-      <Login />
-      <br></br>
-      <PostsNew onCreatePost={handleCreatePost}/>
-    <PostsIndex posts={posts} onShowPost={handleShowPost}/>
-    <Modal show={isShowPostsVisible} onClose={handleClose}>
+      <Modal show={isShowPostsVisible} onClose={handleClose}>
 <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} onDestroyPost={handleDestroyPost}/>
     </Modal>
+    
     </div>
   );
 }
