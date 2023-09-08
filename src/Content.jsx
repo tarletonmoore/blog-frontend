@@ -72,7 +72,12 @@ const handleDestroyPost = (id) => {
   })
 }
 
+const handleResetPosts = (newPosts) => {
+  setPosts(newPosts)
+}
+
      useEffect(handleIndexPosts, []);
+
   return (
     <div>
          <Routes>
@@ -81,7 +86,7 @@ const handleDestroyPost = (id) => {
       <Route path="/login" element={<Login />}/>
       <Route path="/logout" element={<LogoutLink />}/>
       <Route path="/posts/new" element={<PostsNew onCreatePost={handleCreatePost}/>} />
-      <Route path="/posts" element={<PostsIndex posts={posts} onShowPost={handleShowPost}/>}/>
+      <Route path="/posts" element={<PostsIndex posts={posts} onShowPost={handleShowPost} onBackendSearch={handleResetPosts}/>}/>
       <Route path="/posts/:id" element={<SeperatePostsShow />}/>
     </Routes>
       <br></br>

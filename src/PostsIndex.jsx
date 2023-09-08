@@ -1,7 +1,19 @@
 import { useState } from "react";
+import axios from "axios";
 
-export function PostsIndex({ posts }) {
+export function PostsIndex({ posts, onBackendSearch }) {
   const [searchFilter, setSearchFilter] = useState("");
+
+  const [searchFilterBackend, setSearchFilterBackend] = useState("")
+
+  const backendSearch = () => {
+    console.log('searching backend');
+    console.log(searchFilterBackend);
+    axios.get(`http://localhost:3000/posts/search.json?search_term=${searchFilterBackend}`).then(response => {
+      console.log(response.data);
+      onBackendSearch(response.data);
+    })
+  }
 
   return (
     <div id="posts-index">
@@ -11,6 +23,9 @@ export function PostsIndex({ posts }) {
 <option key={post.id}>{post.title}</option>
       )}
       </datalist>
+      <br />
+      <br />
+      <p>Backend Search: <input type="text" value={searchFilterBackend} onChange={event => setSearchFilterBackend(event.target.value)} /><button onClick={backendSearch}>Search</button></p>
 
       {posts.filter((post) => post.title.toLowerCase().includes(searchFilter.toLowerCase())).map((post) => (
         <div key={post.id} className="posts">
