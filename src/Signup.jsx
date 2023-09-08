@@ -22,6 +22,26 @@ export function Signup() {
       });
   };
 
+  let validationMessage;
+
+  if (name.length > 20) {
+    validationMessage = (
+      <small className="text-danger"> name is too long</small>
+      )
+    } else if (name.length === 20) {
+      validationMessage = (
+        <small className="text-warning"> name is at max length</small>
+      )
+  } else if (name.length < 2) {
+    validationMessage = (
+      <small className="text-danger"> name is too short</small>
+    )
+  } else {
+    validationMessage = (
+      <small className="text-success"> {20 - name.length} Characters remaining</small>
+    )
+  }
+
   return (
     <div id="signup">
       <h1>Signup</h1>
@@ -33,7 +53,8 @@ export function Signup() {
       <form onSubmit={handleSubmit}>
         <div>
           Name: <input name="name" type="text" value={name} onChange={event => setName(event.target.value)}/>
-          {20 - name.length < 0 ? (<small> name is too long</small>) : (<small> {20 -name.length} characters remaing </small>)} 
+          {validationMessage}
+          {/* {20 - name.length < 0 ? (<small> name is too long</small>) : (<small> {20 -name.length} characters remaing </small>)}  */}
         </div>
         <div>
           Email: <input name="email" type="email" />
