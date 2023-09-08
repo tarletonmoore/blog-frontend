@@ -1,9 +1,13 @@
+import { useState } from "react";
+
 export function PostsIndex({ posts, onShowPost }) {
-  console.log({ posts });
+  const [searchFilter, setSearchFilter] = useState("");
+
   return (
     <div id="posts-index">
       <h1>All posts</h1>
-      {posts.map((post) => (
+      Search filter: <input type="text" value={searchFilter} onChange={(event) => setSearchFilter(event.target.value)} />
+      {posts.filter((post) => post.title.toLowerCase().includes(searchFilter.toLowerCase())).map((post) => (
         <div key={post.id} className="posts">
            
           <div className="card">
