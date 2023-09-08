@@ -3,6 +3,31 @@ import './index.css'
 import { Link } from "react-router-dom";
 
 export function Header() {
+  let authenticationLinks;
+
+  if (localStorage.jwt === undefined) {
+authenticationLinks = (
+  <>
+  <li className="nav-item">
+  <Link to="/signup" className="nav-link" >Signup</Link>
+
+</li>
+<li className="nav-item">
+  <Link to="/login" className="nav-link" >Login</Link>
+
+</li>
+</>
+)
+  } else {
+    authenticationLinks = (
+      <>
+        <li className="nav-item">
+          <LogoutLink />
+
+        </li>
+      </>
+    )
+  }
 
   return (
     <header>
@@ -34,18 +59,8 @@ export function Header() {
           <Link to="/posts/new" className="nav-link" >New Post</Link>
 
         </li>
-        <li className="nav-item">
-          <Link to="/signup" className="nav-link" >Signup</Link>
-
-        </li>
-        <li className="nav-item">
-          <Link to="/login" className="nav-link" >Login</Link>
-
-        </li>
-        <li className="nav-item">
-          <LogoutLink />
-
-        </li>
+     {authenticationLinks}
+      
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
